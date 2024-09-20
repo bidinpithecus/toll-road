@@ -35,6 +35,7 @@ public class MessageFactory {
                 if (serviceIdentifier.equals("VLOE")) {
                     try {
                         FileWriter writer = new FileWriter("database/vloe.db", true);
+
                         writer.write(message + "\n");
                         writer.close();
                     } catch (IOException e) {

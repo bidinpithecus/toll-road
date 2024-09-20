@@ -13,6 +13,7 @@ CLASSES = \
 	src/MessageFactory.java\
 	src/Server.java\
 	src/Logger.java\
+	src/TicketApplier.java\
 	src/Service.java
 
 classes: $(CLASSES)

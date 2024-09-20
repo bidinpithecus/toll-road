@@ -4,10 +4,12 @@ import java.io.IOException;
 public class Booth {
   private ConnectionFactory factory;
   private String logFilename;
+  public TicketApplier ticketApplier;
 
-  public Booth(ConnectionFactory factory, String logFilename) {
+  public Booth(ConnectionFactory factory, String logFilename, TicketApplier ticketApplier) {
     this.factory = factory;
     this.logFilename = logFilename;
+    this.ticketApplier = ticketApplier;
   }
 
   public void openGate(String car) {
@@ -26,6 +28,8 @@ public class Booth {
       sendToService(licensePlate, price, serviceTag);
     } else {
       Logger.log(this.logFilename, "Car " + car + " without TAG");
+      ticketApplier.applyTicket(car);
+
     }
   }
 

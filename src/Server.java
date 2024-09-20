@@ -8,10 +8,13 @@ public class Server {
     ConnectionFactory factory = new ConnectionFactory();
     factory.setHost("localhost");
 
-    this.booth = new Booth(factory, "logs/booth.log");
+    TicketApplier ticketApplier = new TicketApplier("tickets", "localhost", "logs/tickets.log", factory);
 
-    Service semParar = new Service("SemParar", "localhost", "logs/semParar.log");
-    Service vloe = new Service("VLOE", "localhost", "logs/vloe.log");
+    this.booth = new Booth(factory, "logs/booth.log", ticketApplier);
+
+    Service semParar = new Service("SemParar", "localhost", "logs/semParar.log", "database/semParar.db", factory,
+        ticketApplier);
+    Service vloe = new Service("VLOE", "localhost", "logs/vloe.log", "database/vloe.db", factory, ticketApplier);
   }
 
   public void receiveCar(String car) throws Exception {
