@@ -8,14 +8,14 @@ public class Server {
     ConnectionFactory factory = new ConnectionFactory();
     factory.setHost("localhost");
 
-    this.booth = new Booth(factory);
+    this.booth = new Booth(factory, "logs/booth.log");
 
-    Service semParar = new Service("SemParar", "localhost");
-    Service vloe = new Service("VLOE", "localhost");
+    Service semParar = new Service("SemParar", "localhost", "logs/semParar.log");
+    Service vloe = new Service("VLOE", "localhost", "logs/vloe.log");
   }
 
   public void receiveCar(String car) throws Exception {
-    System.out.printf("   Car %s stopped at the booth\n", car);
+    Logger.log("logs/server.log", "Car " + car + " stopped at the booth");
     booth.processCar(car);
   }
 
@@ -41,7 +41,9 @@ public class Server {
       for (int j = 0; j < numOfCarsPerInterval; j += 1) {
         server.receiveCar(MessageFactory.createMessage());
       }
+      System.out.printf("%d cars have arrived at the booth\n", i + numOfCarsPerInterval);
       TimeUnit.MILLISECONDS.sleep(interval);
     }
+    System.out.println("There are no more cars in the entire world, therefore you shall close the program");
   }
 }

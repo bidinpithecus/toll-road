@@ -1,4 +1,6 @@
 import java.security.SecureRandom;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class MessageFactory {
     private static final String plateCharacters = "1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
@@ -28,12 +30,29 @@ public class MessageFactory {
         String message = plate + ";" + paymentValue;
         if (serviceIdentifier != null) {
             message += ";" + serviceIdentifier;
+
+            if (random.nextBoolean()) {
+                if (serviceIdentifier.equals("VLOE")) {
+                    try {
+                        FileWriter writer = new FileWriter("database/vloe.db", true);
+                        writer.write(message + "\n");
+                        writer.close();
+                    } catch (IOException e) {
+                        System.out.println("Deu um pepino ao escrever no arquivo vloe.db");
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileWriter writer = new FileWriter("database/semParar.db", true);
+                        writer.write(message + "\n");
+                        writer.close();
+                    } catch (IOException e) {
+                        System.out.println("Deu um pepino ao escrever no arquivo semParar.db");
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
         return message;
-    }
-
-    public static void main(String[] args) {
-        String message = createMessage();
-        System.out.println(message);
     }
 }

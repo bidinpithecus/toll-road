@@ -7,11 +7,12 @@ JFLAGS = -g -cp $(CP)
 .SUFFIXES: .java .class
 .java.class:
 	$(JAVAC) $(JFLAGS) -d target $*.java
-
+	
 CLASSES = \
 	src/Booth.java\
 	src/MessageFactory.java\
 	src/Server.java\
+	src/Logger.java\
 	src/Service.java
 
 classes: $(CLASSES)
