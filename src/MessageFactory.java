@@ -15,19 +15,21 @@ public class MessageFactory {
     }
 
     public static int generatePaymentValue() {
-        // Eh pra ser aleatório isso também?!?!?!
         return random.nextInt(10) + 1;
     }
 
     public static String generateServiceIdentifier() {
-        return random.nextBoolean() ? "VLOE" : "Sem Parar";
+        return random.nextBoolean() ? "VLOE" : "SemParar";
     }
 
     public static String createMessage() {
         String plate = generateCarPlate();
         int paymentValue = generatePaymentValue();
-        String serviceIdentifier = generateServiceIdentifier();
-        String message = plate + ";" + paymentValue + ";" + serviceIdentifier;
+        String serviceIdentifier = random.nextBoolean() ? generateServiceIdentifier() : null;
+        String message = plate + ";" + paymentValue;
+        if (serviceIdentifier != null) {
+            message += ";" + serviceIdentifier;
+        }
         return message;
     }
 
