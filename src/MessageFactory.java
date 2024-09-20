@@ -1,7 +1,6 @@
 import java.security.SecureRandom;
 
 public class MessageFactory {
-
     private static final String plateCharacters = "1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
     private static final SecureRandom random = new SecureRandom();
 

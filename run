@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$#" -ne 3 ]; then
+  echo "Usage: $0 <totalNumOfCars> <numOfCarsPerInterval> <interval>"
+  echo "<totalNumOfCars>: Total number of cars to process."
+  echo "<numOfCarsPerInterval>: Number of cars processed per interval."
+  echo "<interval>: Time interval between each tick (in milliseconds)."
+  exit 1
+fi
+
+TOTAL_NUM_OF_CARS=$1
+NUM_OF_CARS_PER_INTERVAL=$2
+INTERVAL=$3
+
+CP=target:/usr/local/rabbitmq-jar/amqp-client-4.0.2.jar:/usr/local/rabbitmq-jar/slf4j-api-1.7.21.jar:/usr/local/rabbitmq-jar/slf4j-simple-1.7.22.jar
+java -cp $CP Server "$TOTAL_NUM_OF_CARS" "$NUM_OF_CARS_PER_INTERVAL" "$INTERVAL"
