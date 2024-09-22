@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Para executar basta rodar o script **run**. Este script é utilizado para iniciar um servidor Java que simula o processamento de um número específico de carros ao longo de intervalos de tempo determinados. Ele requer três parâmetros de entrada:
+Para compilar e executar basta rodar o script **run**. Este script é utilizado para iniciar um servidor Java que simula o processamento de um número específico de carros ao longo de intervalos de tempo determinados. Ele requer três parâmetros de entrada:
 
 1. **totalNumOfCars**: O número total de carros a serem processados.
 2. **numOfCarsPerInterval**: O número de carros processados em cada intervalo.
